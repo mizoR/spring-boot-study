@@ -1,5 +1,6 @@
 package sample.springboot.web;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,8 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
-    @RequestMapping(method=RequestMethod.GET)
-    public String hello() {
-        return "Hello Spring MVC";
+
+    @RequestMapping(method=RequestMethod.POST)
+    public Hoge hello(@RequestBody Hoge param) {
+        System.out.println(param);
+
+        Hoge hoge = new Hoge();
+        hoge.id = 20;
+        hoge.value = "Response";
+
+        return hoge;
     }
 }

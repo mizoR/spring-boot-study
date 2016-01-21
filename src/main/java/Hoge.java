@@ -1,14 +1,11 @@
-package sample.springboot;
+package sample.springboot.web;
 
 public class Hoge {
-    private String name;
-
-    public Hoge(String name) {
-        this.name = name;
-    }
+    public int id;
+    public String value;
 
     @Override
     public String toString() {
-        return "Hoge [name=" + name + "]";
+        return "Hoge [id=" + id + "value=" + value + "]";
     }
 }
