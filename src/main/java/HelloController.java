@@ -1,7 +1,11 @@
 package sample.springboot.web;
 
+import java.util.Map;
+
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -9,17 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping(method=RequestMethod.GET)
-    public String getMethod() {
-        return "get";
-    }
-
-    @RequestMapping(method=RequestMethod.POST)
-    public String postMethod() {
-        return "post";
-    }
-
-    @RequestMapping(value="/hey", method=RequestMethod.POST)
-    public String postMethod2() {
-        return "hey post";
+    public void getMethod(
+            @RequestParam String id,
+            @RequestParam Map<String, String> queryParameters,
+            @RequestParam MultiValueMap<String, String> multiMap) {
+        System.out.println("id=" + id);
+        System.out.println(queryParameters);
+        System.out.println(multiMap);
     }
 }
