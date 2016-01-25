@@ -1,17 +1,21 @@
 package sample.springboot.web;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/hello")
 public class HelloController {
 
     @RequestMapping(method=RequestMethod.GET)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public void getMethod() {
+    public String hello(Model model) {
+        Hoge hoge = new Hoge();
+        hoge.id = 10;
+        hoge.value = "hoge";
+        model.addAttribute("myData", hoge);
+
+        return "hello";
     }
 }
