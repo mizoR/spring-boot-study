@@ -1,5 +1,8 @@
 package sample.springboot.web;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +14,20 @@ public class HelloController {
 
     @RequestMapping(method=RequestMethod.GET)
     public String hello(Model model) {
-        Hoge hoge = new Hoge();
-        hoge.id = 10;
-        hoge.value = "hoge";
-        model.addAttribute("myData", hoge);
+        List<Hoge> list = Arrays.asList(
+                new Hoge() {{
+                    id = 10;
+                    value = "hoge";
+                }},
+                new Hoge() {{
+                    id = 20;
+                    value = "fuga";
+                }},
+                new Hoge() {{
+                    id = 30;
+                    value = "piyo";
+                }});
+        model.addAttribute("hogeList", list);
 
         return "hello";
     }
